@@ -26,7 +26,6 @@ export default {
 				foreground: 'hsl(var(--foreground))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
-					dark: 'hsl(var(--primary-dark))',
 					foreground: 'hsl(var(--primary-foreground))'
 				},
 				secondary: {
@@ -43,7 +42,6 @@ export default {
 				},
 				accent: {
 					DEFAULT: 'hsl(var(--accent))',
-					light: 'hsl(var(--accent-light))',
 					foreground: 'hsl(var(--accent-foreground))'
 				},
 				popover: {
@@ -54,6 +52,22 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				// Amendis specific colors
+				cyan: {
+					DEFAULT: 'hsl(var(--cyan))',
+					light: 'hsl(var(--cyan-light))',
+					dark: 'hsl(var(--cyan-dark))'
+				},
+				green: {
+					DEFAULT: 'hsl(var(--green))',
+					light: 'hsl(var(--green-light))'
+				},
+				'blue-activity': 'hsl(var(--blue-activity))',
+				yellow: 'hsl(var(--yellow))',
+				pink: 'hsl(var(--pink))',
+				'hero-bg': 'hsl(var(--hero-bg))',
+				'news-bg': 'hsl(var(--news-bg))',
+				'recruitment-bg': 'hsl(var(--recruitment-bg))',
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',

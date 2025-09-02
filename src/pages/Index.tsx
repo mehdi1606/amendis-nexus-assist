@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import Header from '@/components/Header';
-import Hero from '@/components/Hero';
-import Services from '@/components/Services';
-import Contact from '@/components/Contact';
+import HeroSection from '@/components/HeroSection';
+import NewsSection from '@/components/NewsSection';
+import ActivitiesSection from '@/components/ActivitiesSection';
+import RecruitmentSection from '@/components/RecruitmentSection';
+import SuggestionsSection from '@/components/SuggestionsSection';
 import Footer from '@/components/Footer';
 import Chatbot from '@/components/Chatbot';
 import ChatbotButton from '@/components/ChatbotButton';
@@ -17,9 +19,11 @@ const Index = () => {
     <div className="min-h-screen">
       <Header />
       <main>
-        <Hero />
-        <Services />
-        <Contact onChatOpen={handleChatOpen} />
+        <HeroSection />
+        <NewsSection />
+        <ActivitiesSection />
+        <RecruitmentSection />
+        <SuggestionsSection />
       </main>
       <Footer />
       
