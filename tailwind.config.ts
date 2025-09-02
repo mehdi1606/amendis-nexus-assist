@@ -52,7 +52,7 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				// Amendis specific colors
+				// Amendis specific colors - Enhanced palette
 				cyan: {
 					DEFAULT: 'hsl(var(--cyan))',
 					light: 'hsl(var(--cyan-light))',
@@ -65,6 +65,8 @@ export default {
 				'blue-activity': 'hsl(var(--blue-activity))',
 				yellow: 'hsl(var(--yellow))',
 				pink: 'hsl(var(--pink))',
+				orange: 'hsl(var(--orange))',
+				purple: 'hsl(var(--purple))',
 				'hero-bg': 'hsl(var(--hero-bg))',
 				'news-bg': 'hsl(var(--news-bg))',
 				'recruitment-bg': 'hsl(var(--recruitment-bg))',
@@ -94,8 +96,11 @@ export default {
 				'4xl': '72px',
 			},
 			boxShadow: {
-				'glass': 'var(--glass-shadow)',
-				'blue': 'var(--shadow-blue)',
+				'glass': 'var(--shadow-soft)',
+				'blue': 'var(--shadow-medium)',
+				'soft': 'var(--shadow-soft)',
+				'medium': 'var(--shadow-medium)',
+				'strong': 'var(--shadow-strong)',
 			},
 			keyframes: {
 				'accordion-down': {

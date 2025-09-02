@@ -15,21 +15,25 @@
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 13%;
 
-    /* Amendis Brand Colors - matching official site */
+    /* Amendis Brand Colors - Enhanced professional palette */
     --primary: 14 86% 55%; /* Amendis orange/red */
     --primary-foreground: 0 0% 100%;
+    --primary-light: 14 86% 75%;
+    --primary-dark: 14 86% 35%;
 
-    /* Amendis Cyan/Blue */
-    --cyan: 186 100% 50%;
-    --cyan-light: 186 100% 85%;
-    --cyan-dark: 186 100% 35%;
+    /* Amendis Cyan/Blue - Enhanced */
+    --cyan: 186 85% 45%;
+    --cyan-light: 186 60% 88%;
+    --cyan-dark: 186 85% 25%;
 
-    /* Activity Card Colors */
+    /* Activity Card Colors - Professional gradient palette */
     --green: 145 63% 42%;
-    --green-light: 145 40% 85%;
-    --blue-activity: 217 91% 75%;
-    --yellow: 45 93% 47%;
-    --pink: 320 65% 80%;
+    --green-light: 145 40% 88%;
+    --blue-activity: 217 91% 70%;
+    --yellow: 45 93% 50%;
+    --pink: 320 45% 85%;
+    --orange: 25 95% 58%;
+    --purple: 262 52% 75%;
 
     --secondary: 220 14% 96%;
     --secondary-foreground: 0 0% 13%;
@@ -52,10 +56,20 @@
     --radius-lg: 0.75rem;
     --radius-xl: 1rem;
 
-    /* Amendis Specific Backgrounds */
-    --hero-bg: 186 100% 85%;
-    --news-bg: 0 0% 98%;
-    --recruitment-bg: 186 100% 50%;
+    /* Amendis Specific Backgrounds - Enhanced */
+    --hero-bg: 186 60% 88%;
+    --news-bg: 0 0% 97%;
+    --recruitment-bg: 186 85% 45%;
+    
+    /* New Gradient Variables */
+    --gradient-hero: linear-gradient(135deg, hsl(186 85% 45%), hsl(186 60% 88%));
+    --gradient-primary: linear-gradient(135deg, hsl(14 86% 55%), hsl(14 86% 35%));
+    --gradient-card: linear-gradient(135deg, hsl(0 0% 100%), hsl(0 0% 97%));
+    
+    /* Enhanced Shadows */
+    --shadow-soft: 0 4px 20px -2px hsl(var(--primary) / 0.08);
+    --shadow-medium: 0 8px 30px -6px hsl(var(--primary) / 0.12);
+    --shadow-strong: 0 12px 40px -8px hsl(var(--primary) / 0.16);
 
     /* Animation Timings */
     --transition-fast: 150ms ease;

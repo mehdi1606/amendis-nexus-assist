@@ -1,5 +1,9 @@
 import { CreditCard, FileText, Leaf, Droplets, Plug, Globe } from 'lucide-react';
 import { Card } from '@/components/ui/card';
+import paymentSolutions from '@/assets/payment-solutions.jpg';
+import environmentRse from '@/assets/environment-rse.jpg';
+import waterConnection from '@/assets/water-connection.jpg';
+import digitalServices from '@/assets/digital-services.jpg';
 
 const ActivitiesSection = () => {
   const activities = [
@@ -7,38 +11,44 @@ const ActivitiesSection = () => {
       title: "Nos solutions de paiement",
       icon: CreditCard,
       bgColor: "bg-cyan",
-      textColor: "text-white"
+      textColor: "text-white",
+      image: paymentSolutions
     },
     {
       title: "Régler votre facture",
       icon: FileText,
       bgColor: "bg-white",
       textColor: "text-foreground",
-      border: true
+      border: true,
+      image: digitalServices
     },
     {
       title: "Nos engagements RSE",
       icon: Leaf,
       bgColor: "bg-blue-activity",
-      textColor: "text-white"
+      textColor: "text-white",
+      image: environmentRse
     },
     {
       title: "Traitement des eaux usées",
       icon: Droplets,
       bgColor: "bg-cyan-light",
-      textColor: "text-foreground"
+      textColor: "text-foreground",
+      image: waterConnection
     },
     {
       title: "Branchement et Abonnement",
       icon: Plug,
       bgColor: "bg-green",
-      textColor: "text-white"
+      textColor: "text-white",
+      image: waterConnection
     },
     {
       title: "Accès à d'autres services",
       icon: Globe,
       bgColor: "bg-green-light",
-      textColor: "text-foreground"
+      textColor: "text-foreground",
+      image: digitalServices
     }
   ];
 
@@ -55,9 +65,17 @@ const ActivitiesSection = () => {
             return (
               <Card 
                 key={index}
-                className={`${activity.bgColor} ${activity.textColor} p-8 relative overflow-hidden group cursor-pointer transition-all duration-300 hover:scale-105 ${activity.border ? 'border-2 border-gray-200' : 'border-none'}`}
+                className={`${activity.bgColor} ${activity.textColor} relative overflow-hidden group cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-strong ${activity.border ? 'border-2 border-gray-200' : 'border-none'}`}
               >
-                <div className="flex flex-col items-start h-full">
+                {/* Background Image */}
+                {activity.image && (
+                  <div 
+                    className="absolute inset-0 bg-cover bg-center opacity-20 group-hover:opacity-30 transition-opacity"
+                    style={{ backgroundImage: `url(${activity.image})` }}
+                  />
+                )}
+                
+                <div className="relative z-10 p-8 flex flex-col items-start h-full">
                   <div className="mb-auto">
                     <IconComponent className="w-8 h-8 mb-4" />
                     <h3 className="text-xl font-semibold leading-tight">

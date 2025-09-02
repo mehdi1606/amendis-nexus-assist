@@ -1,5 +1,8 @@
 import { Card } from '@/components/ui/card';
 import { CheckCircle, Droplets, Zap, Wrench } from 'lucide-react';
+import electricityService from '@/assets/electricity-service.jpg';
+import waterService from '@/assets/water-service.jpg';
+import sanitationService from '@/assets/sanitation-service.jpg';
 
 const Services = () => {
   const services = [
@@ -13,7 +16,9 @@ const Services = () => {
         "Support technique 24/7",
         "Facturation transparente"
       ],
-      color: "text-primary"
+      color: "text-primary",
+      image: electricityService,
+      bgGradient: "from-yellow/10 to-orange/10"
     },
     {
       icon: Droplets,
@@ -25,7 +30,9 @@ const Services = () => {
         "Service continu",
         "Tarification équitable"
       ],
-      color: "text-blue-500"
+      color: "text-cyan",
+      image: waterService,
+      bgGradient: "from-cyan/10 to-blue-activity/10"
     },
     {
       icon: Wrench,
@@ -37,7 +44,9 @@ const Services = () => {
         "Infrastructure moderne",
         "Respect environnemental"
       ],
-      color: "text-green-500"
+      color: "text-green",
+      image: sanitationService,
+      bgGradient: "from-green/10 to-cyan/10"
     }
   ];
 
@@ -60,29 +69,37 @@ const Services = () => {
             return (
               <Card 
                 key={index} 
-                className="glass-card p-8 space-y-6 hover-scale transition-all duration-300 animate-slide-up"
+                className={`relative overflow-hidden p-8 space-y-6 hover-scale transition-all duration-300 animate-slide-up shadow-soft hover:shadow-medium bg-gradient-to-br ${service.bgGradient} backdrop-blur-sm border-0`}
                 style={{ animationDelay: `${index * 200}ms` }}
               >
-                <div className="flex items-center space-x-4">
-                  <div className={`p-3 rounded-xl bg-primary/10 ${service.color}`}>
-                    <IconComponent className="w-8 h-8" />
-                  </div>
-                  <h3 className="text-2xl font-semibold text-foreground">
-                    {service.title}
-                  </h3>
-                </div>
+                {/* Background Image */}
+                <div 
+                  className="absolute inset-0 bg-cover bg-center opacity-5 group-hover:opacity-10 transition-opacity"
+                  style={{ backgroundImage: `url(${service.image})` }}
+                />
                 
-                <p className="text-muted-foreground text-lg">
-                  {service.description}
-                </p>
-
-                <div className="space-y-3">
-                  {service.benefits.map((benefit, benefitIndex) => (
-                    <div key={benefitIndex} className="flex items-center space-x-3">
-                      <CheckCircle className="w-5 h-5 text-accent flex-shrink-0" />
-                      <span className="text-foreground">{benefit}</span>
+                <div className="relative z-10">
+                  <div className="flex items-center space-x-4 mb-6">
+                    <div className={`p-3 rounded-xl bg-white shadow-soft ${service.color}`}>
+                      <IconComponent className="w-8 h-8" />
                     </div>
-                  ))}
+                    <h3 className="text-2xl font-semibold text-foreground">
+                      {service.title}
+                    </h3>
+                  </div>
+                  
+                  <p className="text-muted-foreground text-lg mb-6">
+                    {service.description}
+                  </p>
+
+                  <div className="space-y-3">
+                    {service.benefits.map((benefit, benefitIndex) => (
+                      <div key={benefitIndex} className="flex items-center space-x-3">
+                        <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
+                        <span className="text-foreground">{benefit}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </Card>
             );
