@@ -39,9 +39,10 @@ const Chatbot = ({ isOpen, onClose }: ChatbotProps) => {
   }, [messages]);
 
   const quickActions = [
-    { icon: User, text: "Mon compte", action: "Je veux accéder à mon compte client" },
-    { icon: CreditCard, text: "Paiement", action: "Je veux payer ma facture" },
-    { icon: Phone, text: "Contact", action: "Comment vous contacter ?" }
+    { icon: User, text: "Mon compte", action: "Comment créer un compte client ?" },
+    { icon: CreditCard, text: "Paiement", action: "Comment payer ma facture ?" },
+    { icon: Phone, text: "Consommation", action: "Comment suivre ma consommation ?" },
+    { icon: MessageCircle, text: "Services", action: "Quels sont vos services ?" }
   ];
 
   const handleSendMessage = async (content: string) => {
@@ -75,23 +76,110 @@ const Chatbot = ({ isOpen, onClose }: ChatbotProps) => {
   const getBotResponse = (userMessage: string): string => {
     const message = userMessage.toLowerCase();
     
-    if (message.includes('compte') || message.includes('connection')) {
-      return "🔐 Pour accéder à votre espace client, rendez-vous sur www.amendis.ma et cliquez sur 'Espace Client'. Vous aurez besoin de votre numéro de contrat et de votre mot de passe.";
+    // 🔑 Compte client
+    if (message.includes('créer un compte') || message.includes('inscription') || message.includes('amendisclient')) {
+      return "🔑 **Comment créer un compte sur Amendis Client ?**\n\nRendez-vous sur www.amendisclient.ma. Cliquez sur 'Créer un compte', puis remplissez vos informations :\n• Numéro de contrat\n• Email\n• CIN\n\nVous pourrez ensuite accéder à vos factures et services en ligne.";
     }
     
-    if (message.includes('facture') || message.includes('paiement') || message.includes('payer')) {
-      return "💳 Vous pouvez payer votre facture de plusieurs façons :\n• En ligne sur votre espace client\n• Par carte bancaire sur notre site\n• Dans nos agences commerciales\n• Chez nos partenaires agréés\n\nAvez-vous besoin d'aide pour l'un de ces moyens ?";
+    if (message.includes('mot de passe oublié') || message.includes('réinitialiser') || message.includes('password')) {
+      return "🔐 **Mot de passe oublié ?**\n\nSur la page de connexion, cliquez sur 'Mot de passe oublié'. Saisissez votre email et suivez les instructions envoyées pour réinitialiser votre mot de passe.";
     }
     
-    if (message.includes('panne') || message.includes('problème') || message.includes('coupure')) {
-      return "⚡ Pour signaler une panne :\n• Appelez le 08020 08000 (gratuit)\n• Utilisez notre application mobile\n• Connectez-vous à votre espace client\n\nPrécisez votre adresse exacte pour un traitement rapide de votre demande.";
+    if (message.includes('site ne fonctionne pas') || message.includes('maintenance') || message.includes('indisponible')) {
+      return "🔧 **Site indisponible ?**\n\nParfois le site est indisponible pour maintenance. Dans ce cas :\n• Réessayez plus tard\n• Utilisez d'autres canaux : paiement GAB, USSD #655#, Fatourati";
     }
     
-    if (message.includes('contact') || message.includes('téléphone') || message.includes('joindre')) {
-      return "📞 Nos contacts :\n• Service client : 08020 08000 (gratuit, 24h/24)\n• Site web : www.amendis.ma\n• Agences commerciales dans toutes les grandes villes\n\nNotre équipe est à votre disposition 24h/24 et 7j/7 !";
+    // 💳 Paiement et factures
+    if (message.includes('payer en ligne') || message.includes('paiement en ligne') || (message.includes('payer') && message.includes('facture'))) {
+      return "💳 **Comment payer ma facture en ligne ?**\n\nConnectez-vous à www.amendisclient.ma, allez à la section 'Mes factures' et choisissez 'Payer'. Le paiement est sécurisé via CMI (Visa/MasterCard).";
     }
     
-    return "Merci pour votre message ! 😊 Pour vous aider au mieux, vous pouvez :\n• Appeler notre service client au 08020 08000\n• Visiter www.amendis.ma\n• Utiliser les boutons d'action rapide ci-dessus\n\nEst-ce que cela répond à votre question ?";
+    if (message.includes('fatourati')) {
+      return "📱 **Paiement via Fatourati**\n\nAccédez à l'application ou au site Fatourati :\n• Recherchez 'Amendis'\n• Saisissez votre numéro de contrat\n• Réglez par carte bancaire ou via vos canaux bancaires habituels";
+    }
+    
+    if (message.includes('gab') || message.includes('distributeur automatique')) {
+      return "🏧 **Paiement via GAB**\n\nOui ! Vous pouvez régler vos factures via les GAB des banques partenaires :\n• Banque Populaire\n• BMCE/BOA\n• SGMA\n• CIH\n\nService disponible 24h/24 et 7j/7.";
+    }
+    
+    if (message.includes('#655#') || message.includes('ussd')) {
+      return "📞 **Paiement avec le code USSD #655#**\n\nTapez #655# depuis votre téléphone :\n1. Choisissez 'Factures Amendis'\n2. Saisissez votre numéro de contrat\n3. Sélectionnez la facture\n4. Choisissez le mode de paiement";
+    }
+    
+    if (message.includes('prélèvement automatique') || message.includes('prelevement')) {
+      return "🔄 **Prélèvement automatique**\n\nOui ! Remplissez un formulaire de prélèvement automatique auprès de votre agence bancaire. À chaque règlement, vous recevrez un SMS de confirmation.";
+    }
+    
+    // 📊 Consommation et compteur
+    if (message.includes('numéro de contrat') || message.includes('numero contrat')) {
+      return "📋 **Où trouver mon numéro de contrat ?**\n\nLe numéro de contrat figure en haut à gauche de votre facture. Il est nécessaire pour :\n• Les paiements en ligne\n• Fatourati\n• USSD #655#";
+    }
+    
+    if (message.includes('suivre ma consommation') || message.includes('consommation')) {
+      return "📊 **Comment suivre ma consommation ?**\n\nDepuis votre espace client sur amendisclient.ma, rubrique 'Consommation' :\n• Consultez l'historique de vos relevés\n• Comparez vos consommations mensuelles";
+    }
+    
+    if (message.includes('consommation élevée') || message.includes('consommation trop élevée')) {
+      return "⚠️ **Consommation trop élevée ?**\n\n1. Vérifiez d'abord vos appareils électriques/eau\n2. Si l'anomalie persiste, contactez le service client au 08020 08000 pour demander une vérification de votre compteur";
+    }
+    
+    if (message.includes('auto-relève') || message.includes('déclarer index') || message.includes('index')) {
+      return "📝 **Comment déclarer mon index (auto-relève) ?**\n\nVous pouvez déclarer vous-même la relève :\n• Via l'espace client en ligne\n• Par SMS si vous êtes inscrit au service Amendis Info";
+    }
+    
+    if (message.includes('déplacement compteur') || message.includes('déplacer compteur')) {
+      return "🔧 **Demander le déplacement de mon compteur**\n\nDéposez une demande manuscrite à votre agence Amendis avec :\n• Copie de votre CIN\n• La localisation souhaitée\n\nUn devis vous sera fourni, frais à votre charge.";
+    }
+    
+    // 🛠 Services administratifs
+    if (message.includes('attestation') || message.includes('quitus')) {
+      return "📄 **Comment obtenir une attestation (quitus) ?**\n\nPrésentez-vous à votre agence Amendis avec :\n• Votre CIN\n• Votre numéro de contrat\n\nLe document est délivré une fois toutes les factures réglées.";
+    }
+    
+    if (message.includes('résilier') || message.includes('résiliation')) {
+      return "📋 **Comment résilier mon contrat ?**\n\nDéposez une demande de résiliation :\n• En agence\n• Par courrier\n\nLa résiliation est effective sous 2 jours ouvrables maximum.";
+    }
+    
+    if (message.includes('vidange') || message.includes('fosse septique')) {
+      return "🚛 **Demander la vidange de ma fosse septique**\n\nSi votre logement n'est pas raccordé au réseau collectif :\n• Vidange gratuite une fois par an\n• Sinon, un devis sera établi";
+    }
+    
+    // 📞 Contact et support
+    if (message.includes('service client') || message.includes('numéro') || message.includes('08020')) {
+      return "📞 **Service client Amendis**\n\nCentre d'appel Amendis Direct :\n**08020 08000**\n\nService disponible 24h/24 et 7j/7 !";
+    }
+    
+    if (message.includes('agence') || message.includes('agences')) {
+      return "🏢 **Trouver l'agence la plus proche**\n\nConsultez la rubrique 'Agences' sur www.amendis.ma pour :\n• Localiser l'agence la plus proche\n• Vérifier les horaires d'ouverture";
+    }
+    
+    if (message.includes('contact internet') || message.includes('formulaire contact')) {
+      return "💻 **Contacter Amendis par internet**\n\nOui ! Vous pouvez nous contacter :\n• Via l'espace client en ligne\n• Formulaire de contact sur le site officiel www.amendis.ma";
+    }
+    
+    // ❓ Divers
+    if (message.includes('application mobile') || message.includes('app mobile')) {
+      return "📱 **Application mobile Amendis**\n\nOui ! L'application Amendis Mobile est disponible :\n• Android et iOS\n• Consulter vos factures\n• Effectuer des paiements\n• Suivre vos consommations";
+    }
+    
+    if (message.includes('factures par sms') || message.includes('amendis info')) {
+      return "📱 **Recevoir mes factures par SMS**\n\nActivez le service :\n• **Amendis Info** (gratuit)\n• **Amendis Info Plus** (payant)\n\nInscription : à votre agence ou via l'espace client";
+    }
+    
+    if (message.includes('facture payée') || message.includes('vérifier paiement')) {
+      return "✅ **Vérifier si j'ai payé une facture**\n\nConnectez-vous à votre espace client :\n• Section 'Mes factures'\n• Le statut (payée / non payée) est affiché\n• Ou contactez le service client pour confirmation";
+    }
+    
+    // Réponses générales
+    if (message.includes('bonjour') || message.includes('salut') || message.includes('hello')) {
+      return "👋 Bonjour ! Je suis l'assistant virtuel AMENDIS. Comment puis-je vous aider aujourd'hui ?\n\n🔹 Compte client\n🔹 Paiement et factures\n🔹 Consommation\n🔹 Services administratifs\n🔹 Contact";
+    }
+    
+    if (message.includes('aide') || message.includes('help')) {
+      return "🆘 **Comment puis-je vous aider ?**\n\n**Sujets principaux :**\n🔑 Compte client et connexion\n💳 Paiement et factures\n📊 Consommation et compteur\n🛠 Services administratifs\n📞 Contact et support\n\n**Ou appelez directement :** 08020 08000 (24h/24)";
+    }
+    
+    return "Merci pour votre message ! 😊 \n\nPour une réponse précise, vous pouvez :\n• Reformuler votre question\n• Appeler le 08020 08000 (gratuit, 24h/24)\n• Visiter www.amendis.ma\n• Utiliser les boutons d'action rapide\n\nComment puis-je mieux vous aider ?";
   };
 
   const handleQuickAction = (action: string) => {
@@ -174,7 +262,7 @@ const Chatbot = ({ isOpen, onClose }: ChatbotProps) => {
 
         {/* Quick Actions */}
         <div className="p-4 border-t">
-          <div className="grid grid-cols-3 gap-2 mb-4">
+          <div className="grid grid-cols-2 gap-2 mb-4">
             {quickActions.map((action, index) => {
               const IconComponent = action.icon;
               return (
