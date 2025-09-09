@@ -151,36 +151,38 @@ const ChatbotPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background/95 to-primary/5">
       {/* Header */}
-      <div className="border-b border-border/50 bg-background/80 backdrop-blur-lg sticky top-0 z-10">
-        <div className="container mx-auto px-4 py-4">
+      <div className="border-b bg-background/95 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+        <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
               <Link 
                 to="/" 
-                className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
+                className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors p-2 rounded-lg hover:bg-muted/50"
               >
                 <ArrowLeft className="w-5 h-5" />
-                <span>Retour</span>
+                <span className="font-medium">Retour</span>
               </Link>
-              <div className="flex items-center gap-3">
-                <div className="relative">
-                  <div className="w-12 h-12 bg-gradient-primary rounded-full flex items-center justify-center">
-                    <Bot className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-success rounded-full border-2 border-background"></div>
+            </div>
+            
+            <div className="flex items-center gap-3 flex-1 justify-center">
+              <div className="relative">
+                <div className="w-10 h-10 bg-gradient-primary rounded-full flex items-center justify-center shadow-lg">
+                  <Bot className="w-5 h-5 text-white" />
                 </div>
-                <div>
-                  <h1 className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-                    Assistant Virtuel AMENDIS
-                  </h1>
-                  <p className="text-sm text-muted-foreground flex items-center gap-1">
-                    <Sparkles className="w-3 h-3" />
-                    Disponible 24h/24, 7j/7
-                  </p>
-                </div>
+                <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green rounded-full border-2 border-background"></div>
+              </div>
+              <div className="text-center">
+                <h1 className="text-lg font-bold text-primary">
+                  Assistant Virtuel AMENDIS
+                </h1>
+                <p className="text-xs text-muted-foreground flex items-center justify-center gap-1">
+                  <Sparkles className="w-3 h-3" />
+                  Disponible 24h/24, 7j/7
+                </p>
               </div>
             </div>
-            <Badge variant="secondary" className="bg-success/10 text-success border-success/20">
+            
+            <Badge className="bg-green/10 text-green border-green/20 font-medium">
               En ligne
             </Badge>
           </div>
