@@ -53,42 +53,42 @@ const ChatbotPage = () => {
       icon: User, 
       text: "Mon Compte Client", 
       action: "Comment créer un compte client ?",
-      color: "bg-gradient-to-r from-primary to-primary-glow",
+      color: "bg-gradient-to-r from-primary to-primary/80",
       description: "Créer & gérer votre compte"
     },
     { 
       icon: CreditCard, 
       text: "Paiement Factures", 
       action: "Comment payer ma facture ?",
-      color: "bg-gradient-to-r from-success to-success/80",
+      color: "bg-gradient-to-r from-green to-green/80",
       description: "Payer vos factures en ligne"
     },
     { 
       icon: Phone, 
       text: "Ma Consommation", 
       action: "Comment suivre ma consommation ?",
-      color: "bg-gradient-to-r from-info to-info/80",
+      color: "bg-gradient-to-r from-cyan to-cyan/80",
       description: "Suivre votre consommation"
     },
     { 
       icon: FileText, 
       text: "Services Admin", 
       action: "Comment obtenir une attestation ?",
-      color: "bg-gradient-to-r from-warning to-warning/80",
+      color: "bg-gradient-to-r from-orange to-orange/80",
       description: "Documents & attestations"
     },
     { 
       icon: Settings, 
       text: "Support Technique", 
       action: "J'ai un problème technique",
-      color: "bg-gradient-to-r from-secondary to-secondary/80",
+      color: "bg-gradient-to-r from-purple to-purple/80",
       description: "Assistance technique"
     },
     { 
       icon: MessageCircle, 
       text: "Contact & Agences", 
       action: "Où trouver l'agence la plus proche ?",
-      color: "bg-gradient-to-r from-accent to-accent/80",
+      color: "bg-gradient-to-r from-blue-activity to-blue-activity/80",
       description: "Nous contacter"
     }
   ];
@@ -187,31 +187,31 @@ const ChatbotPage = () => {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-8">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-3 gap-8">
+      <div className="container mx-auto px-4 py-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-4 gap-6">
             {/* Quick Actions Sidebar */}
-            <div className="lg:col-span-1 space-y-6">
-              <Card className="p-6 bg-gradient-subtle border-border/50 shadow-elegant">
+            <div className="lg:col-span-1 space-y-4">
+              <Card className="p-4 bg-card border shadow-soft">
                 <div className="flex items-center gap-2 mb-4">
                   <Sparkles className="w-5 h-5 text-primary" />
-                  <h2 className="text-lg font-semibold">Actions Rapides</h2>
+                  <h2 className="font-semibold">Actions Rapides</h2>
                 </div>
-                <div className="space-y-3">
+                <div className="space-y-2">
                   {quickActions.map((action, index) => (
                     <Button
                       key={index}
                       onClick={() => handleQuickAction(action.action)}
-                      className={`w-full justify-start h-auto p-4 ${action.color} hover:scale-105 transition-all duration-200 text-white border-none shadow-lg hover:shadow-xl group`}
-                      variant="outline"
+                      className={`w-full justify-start h-auto p-3 ${action.color} hover-scale text-white border-none shadow-medium hover:shadow-glow group`}
+                      variant="default"
                     >
-                      <div className="flex items-center gap-3 w-full">
-                        <div className="w-10 h-10 rounded-lg bg-white/20 flex items-center justify-center group-hover:bg-white/30 transition-colors">
-                          <action.icon className="w-5 h-5" />
+                      <div className="flex items-center gap-2 w-full">
+                        <div className="w-8 h-8 rounded-md bg-white/20 flex items-center justify-center group-hover:bg-white/30 transition-colors">
+                          <action.icon className="w-4 h-4" />
                         </div>
-                        <div className="text-left flex-1">
-                          <div className="font-medium text-sm">{action.text}</div>
-                          <div className="text-xs opacity-80">{action.description}</div>
+                        <div className="text-left flex-1 min-w-0">
+                          <div className="font-medium text-xs truncate">{action.text}</div>
+                          <div className="text-[10px] opacity-90 truncate">{action.description}</div>
                         </div>
                       </div>
                     </Button>
@@ -220,39 +220,37 @@ const ChatbotPage = () => {
               </Card>
 
               {/* Stats Card */}
-              <Card className="p-6 bg-gradient-to-r from-primary/5 to-primary/10 border-primary/20">
-                <h3 className="font-semibold mb-4 text-primary">Statistiques</h3>
-                <div className="space-y-3">
+              <Card className="p-4 bg-gradient-to-r from-primary/5 to-cyan/5 border-primary/20 shadow-soft">
+                <h3 className="font-semibold mb-3 text-primary text-sm">Statistiques</h3>
+                <div className="space-y-2">
                   <div className="flex justify-between items-center">
-                    <span className="text-sm text-muted-foreground">Questions résolues</span>
-                    <Badge className="bg-primary text-white">+10k</Badge>
+                    <span className="text-xs text-muted-foreground">Questions résolues</span>
+                    <Badge className="bg-primary text-primary-foreground text-xs px-2 py-0">+10k</Badge>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-sm text-muted-foreground">Temps de réponse</span>
-                    <Badge variant="outline" className="text-success border-success">&lt; 2s</Badge>
+                    <span className="text-xs text-muted-foreground">Temps de réponse</span>
+                    <Badge variant="outline" className="text-green border-green text-xs px-2 py-0">&lt; 2s</Badge>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-sm text-muted-foreground">Satisfaction</span>
-                    <Badge className="bg-success text-white">98%</Badge>
+                    <span className="text-xs text-muted-foreground">Satisfaction</span>
+                    <Badge className="bg-green text-white text-xs px-2 py-0">98%</Badge>
                   </div>
                 </div>
               </Card>
             </div>
 
             {/* Chat Interface */}
-            <div className="lg:col-span-2">
-              <Card className="flex flex-col h-[600px] bg-background/95 backdrop-blur-sm border-border/50 shadow-elegant">
+            <div className="lg:col-span-3">
+              <Card className="flex flex-col h-[70vh] min-h-[500px] bg-card backdrop-blur-sm border shadow-medium">
                 {/* Chat Header */}
-                <div className="border-b border-border/50 p-4 bg-gradient-subtle">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-gradient-primary rounded-full flex items-center justify-center">
-                        <MessageCircle className="w-5 h-5 text-white" />
-                      </div>
-                      <div>
-                        <h3 className="font-semibold">Chat en direct</h3>
-                        <p className="text-sm text-muted-foreground">Posez-moi vos questions</p>
-                      </div>
+                <div className="border-b p-4 bg-gradient-to-r from-primary/5 to-cyan/5">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-gradient-primary rounded-full flex items-center justify-center">
+                      <MessageCircle className="w-5 h-5 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-primary">Chat en direct</h3>
+                      <p className="text-sm text-muted-foreground">Posez-moi vos questions sur AMENDIS</p>
                     </div>
                   </div>
                 </div>
@@ -315,7 +313,7 @@ const ChatbotPage = () => {
                 </div>
 
                 {/* Input Area */}
-                <div className="border-t border-border/50 p-4 bg-gradient-subtle">
+                <div className="border-t p-4 bg-muted/30">
                   <div className="flex gap-3">
                     <Textarea
                       ref={textareaRef}
@@ -323,13 +321,13 @@ const ChatbotPage = () => {
                       onChange={(e) => setInputValue(e.target.value)}
                       onKeyPress={handleKeyPress}
                       placeholder="Tapez votre question ici... (Entrée pour envoyer)"
-                      className="flex-1 resize-none min-h-[44px] max-h-32 bg-background/50"
+                      className="flex-1 resize-none min-h-[44px] max-h-32 bg-background border-input"
                       rows={1}
                     />
                     <Button
                       onClick={() => handleSendMessage(inputValue)}
                       disabled={!inputValue.trim() || isTyping}
-                      className="bg-gradient-primary hover:shadow-glow transition-all duration-200 px-4"
+                      className="bg-gradient-primary hover:shadow-glow transition-all duration-200 px-4 shrink-0"
                     >
                       <Send className="w-4 h-4" />
                     </Button>

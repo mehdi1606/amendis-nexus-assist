@@ -179,6 +179,35 @@
     background: var(--gradient-subtle);
   }
 
+  /* Activity Card Color Utilities */
+  .bg-green {
+    background: hsl(var(--green));
+  }
+  
+  .bg-cyan {
+    background: hsl(var(--cyan));
+  }
+  
+  .bg-orange {
+    background: hsl(var(--orange));
+  }
+  
+  .bg-purple {
+    background: hsl(var(--purple));
+  }
+  
+  .bg-blue-activity {
+    background: hsl(var(--blue-activity));
+  }
+  
+  .text-green {
+    color: hsl(var(--green));
+  }
+  
+  .border-green {
+    border-color: hsl(var(--green));
+  }
+
   /* Animation Utilities */
   .animate-fade-in {
     animation: fadeIn var(--transition-normal) ease-out;
